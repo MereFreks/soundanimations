@@ -1,0 +1,664 @@
+/* ============================================================
+   STYLE.CSS
+   Sound Effects Synthesis — Research Study Website
+   Dark, editorial, academic aesthetic
+   ============================================================ */
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --bg:          #080c10;        /* deepest background */
+  --surface:     #0d1219;        /* card / section surface */
+  --surface-2:   #131b24;        /* elevated surface */
+  --border:      rgba(255,255,255,0.07);
+  --border-hover:rgba(255,255,255,0.18);
+  --accent:      #c8a96e;        /* warm gold — academic, serif feel */
+  --accent-dim:  rgba(200,169,110,0.15);
+  --text-primary:#e8e4dc;        /* warm off-white */
+  --text-sec:    #7a8490;        /* muted secondary */
+  --text-hint:   #4a545c;        /* very muted */
+  --radius:      6px;
+  --radius-lg:   14px;
+  --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.watermark {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'Space Mono', monospace;
+  pointer-events: none;
+  user-select: none;
+  z-index: 100;
+}
+
+/* ── Page System (SPA Navigation) ──────────────────────────── */
+/* Each .page is absolutely positioned and hidden by default   */
+.page {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(12px);
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+/* Active page is fully visible */
+.page.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+/* ── Background Effects ─────────────────────────────────────── */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.bg-glow {
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse at center,
+    rgba(200,169,110,0.06) 0%,
+    transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+.mono {
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.03em;
+}
+
+.main-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin: 1.2rem 0 1rem;
+}
+
+.main-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.track-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: var(--text-sec);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.label {
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+.instruction {
+  font-size: 0.92rem;
+  color: var(--text-sec);
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.small-note {
+  font-size: 0.78rem;
+  color: var(--text-hint);
+  margin-top: 1.2rem;
+}
+
+/* ── Divider ────────────────────────────────────────────────── */
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  margin: 2rem auto;
+  opacity: 0.5;
+}
+
+/* ── Title Card (Page 1 & Thank You) ───────────────────────── */
+.title-card {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+/* ── Fade-in Animation ──────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease both;
+  animation-delay: 0.15s;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2.2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0d0d0d;
+  box-shadow: 0 0 0 0 rgba(200,169,110,0);
+}
+
+.btn-primary:hover {
+  background: #d9bc84;
+  box-shadow: 0 0 28px rgba(200,169,110,0.25);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Disabled state */
+.btn.disabled,
+.btn:disabled {
+  background: var(--surface-2);
+  color: var(--text-hint);
+  border: 1px solid var(--border);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.btn:not(:disabled):hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Submit button — slightly larger */
+.btn-submit {
+  padding: 1rem 2.8rem;
+  font-size: 1rem;
+}
+
+/* ── Page Inner Layout (Track Pages) ───────────────────────── */
+.page-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ── Track Header ───────────────────────────────────────────── */
+.track-header {
+  text-align: center;
+  width: 100%;
+}
+
+.track-badge {
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  border: 1px solid var(--accent-dim);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+.track-desc {
+  color: var(--text-sec);
+  font-size: 0.93rem;
+  margin-top: 0.4rem;
+}
+
+/* ── Video Player ───────────────────────────────────────────── */
+.video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  box-shadow:
+    0 4px 32px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.03) inset;
+}
+
+.video-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--radius-lg);
+}
+
+/* Small badge overlay on video */
+.video-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.65rem;
+  color: var(--accent);
+  background: rgba(8,12,16,0.85);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Nav Row (Next buttons below video) ─────────────────────── */
+.nav-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.watch-hint {
+  font-size: 0.78rem;
+  color: var(--text-hint);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Hide hint once video is done */
+.watch-hint.hidden {
+  display: none;
+}
+
+/* ── Step Indicator ─────────────────────────────────────────── */
+.step-indicator {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.step {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.step.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  width: 40px;
+}
+
+.step.done {
+  background: rgba(200,169,110,0.35);
+  border-color: rgba(200,169,110,0.3);
+}
+
+/* ── Questionnaire ──────────────────────────────────────────── */
+/* The questionnaire page is too long for the fixed/centered SPA
+   layout. We break it out of that system so it scrolls normally
+   and the heading is always visible at the top on load. */
+.page.questionnaire {
+  position: relative;   /* out of the fixed-position stack */
+  inset: unset;
+  display: none;        /* hidden by default (replaces opacity trick) */
+  flex-direction: column;
+  align-items: center;
+  overflow-y: visible;
+  padding: 3rem 1rem 6rem;
+  min-height: 100vh;
+  opacity: 1;
+  transform: none;
+  pointer-events: all;
+  justify-content: flex-start;
+}
+
+.page.questionnaire.active {
+  display: flex;
+  animation: fadeInUp 0.5s ease both;
+}
+
+/* Centre the inner content column */
+.page.questionnaire .page-inner {
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Hide the floating step indicator — it drifts over the form */
+#page-5 .step-indicator {
+  display: none;
+}
+
+.survey-block {
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+}
+
+.survey-block:last-of-type {
+  border-bottom: none;
+}
+
+.survey-track-label {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.8rem;
+}
+
+.track-num {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.track-sublabel {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-hint);
+  letter-spacing: 0;
+}
+
+/* ── Question Group ─────────────────────────────────────────── */
+.question-group {
+  margin-bottom: 1.8rem;
+}
+
+.q-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.q-hint {
+  font-size: 0.8rem;
+  color: var(--text-sec);
+  margin-bottom: 0.9rem;
+}
+
+/* ── Likert Scale ───────────────────────────────────────────── */
+.likert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.likert-label {
+  font-size: 0.72rem;
+  color: var(--text-hint);
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+}
+
+.likert-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Radio pill — the number circles */
+.radio-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Hide the real radio input */
+.radio-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-pill span {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-sec);
+  font-size: 0.88rem;
+  font-family: 'Space Mono', monospace;
+  transition: var(--transition);
+}
+
+.radio-pill:hover span {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* Selected state */
+.radio-pill input[type="radio"]:checked + span {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0d0d0d;
+  font-weight: 700;
+  box-shadow: 0 0 16px rgba(200,169,110,0.3);
+}
+
+/* ── Preference Options ─────────────────────────────────────── */
+.preference-options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pref-pill {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pref-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pref-pill span {
+  padding: 0.65rem 1.6rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-sec);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.pref-pill:hover span {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.pref-pill input[type="radio"]:checked + span {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0d0d0d;
+  font-weight: 700;
+  box-shadow: 0 0 16px rgba(200,169,110,0.3);
+}
+
+/* ── Preference block styling ───────────────────────────────── */
+.preference-block {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border) !important;
+  padding: 2rem !important;
+  margin-top: 0.5rem;
+}
+
+/* ── Error Message ──────────────────────────────────────────── */
+.error-msg {
+  color: #e07070;
+  font-size: 0.85rem;
+  font-family: 'Space Mono', monospace;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  background: rgba(224,112,112,0.07);
+  border: 1px solid rgba(224,112,112,0.2);
+  border-radius: var(--radius);
+}
+
+/* ── Submit Row ─────────────────────────────────────────────── */
+.submit-row {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0 1rem;
+}
+
+/* ── Thank You / Confirmation ───────────────────────────────── */
+.thank-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent);
+  margin: 0 auto 1.5rem;
+  animation: pulseGlow 2s ease infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,169,110,0); }
+  50%       { box-shadow: 0 0 24px 6px rgba(200,169,110,0.18); }
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .likert {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .likert-options {
+    flex-wrap: wrap;
+  }
+  .radio-pill span {
+    width: 38px;
+    height: 38px;
+  }
+  .survey-track-label {
+    flex-wrap: wrap;
+  }
+  .preference-options {
+    gap: 0.6rem;
+  }
+  .page {
+    padding: 1.5rem 1rem 5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .likert-label {
+    display: none;
+  }
+}
