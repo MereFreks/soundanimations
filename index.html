@@ -4,24 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sound Effects Synthesis in Digital Animation</title>
-  <!-- Google Fonts: DM Serif Display (headline) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/vponltc04p1u8kqgiqcn6/FLOW_NO_SOUNDTRACK.mp4?rlkey=a762dno2paxga67w9vaqvumpf&st=hfk3wqc7&raw=1" crossorigin />
+  <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/2nrkiie0bzvpn2vdpikr5/AI_SOUNDTRACK_FINAL.mp4?rlkey=rjf36cxt9uxs3iixagfe9a6rz&st=0m6abrhu&raw=1" crossorigin />
+  <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/jgu1onuz0s9eb7iw5rkwr/FOLEY_SOUNDTRACK_FINAL.mp4?rlkey=lykmutcdyqmjh37e6sj832eqa&st=vzfsexq1&raw=1" crossorigin />
 </head>
 <body>
 
-  <!-- ============================================================
-       PAGE 1 — TITLE / LANDING
-  ============================================================ -->
+  <!-- HOMEPAGE -->
+
   <section id="page-1" class="page active">
-    <!-- Animated background grid -->
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
 
     <div class="title-card fade-in-up">
-      <!-- Study identifier -->
       <p class="label mono">Bachelor's Thesis Research · 2026</p>
 
       <h1 class="main-title">
@@ -30,49 +29,52 @@
         in Digital Animation
       </h1>
 
-      <p class="subtitle">
-        An experimental comparison of Foley and AI-generated<br />sound design for animated sequences
-      </p>
+      <div class="divider"></div>
+
+      <div class="subtitle justify-text">
+        <p>
+          My name is Domantas Juzikis, I am a Multimedia Design fourth year student (group MKDfu-22), Vilnius TECH university. This experiment is part of my bachelor's thesis <strong>Sound Effects Synthesis in Digital Animation</strong>.
+          In this study, I am exploring how different sound design approaches influence the way people perceive animated scenes.
+        </p>
+        <p>
+          Participants will view three versions of the same animated sequence: a baseline with <strong>no sound</strong>,
+          one featuring <strong>AI-generated audio</strong>, and one created via <strong>traditional (Foley) sound design</strong>.
+          The labeling remains neutral to ensure an unbiased evaluation.
+        </p>
+        <p>
+          The research aims to identify how these methods impact emotional engagement, realism, and audiovisual coherence,
+          identifying the unique strengths of both Foley practices and emerging AI tools.
+        </p>
+        <p>
+          After viewing, you will complete a brief questionnaire. Your participation is anonymous and submitted responses are used strictly for academic purposes.
+        </p>
+      </div>
 
       <div class="divider"></div>
 
       <p class="instruction">
-        You will be shown three short animated sequences.<br />
-        Please watch each one carefully before proceeding.
+        Next, you will be shown three short animated sequences.<br />
+        Please watch each one carefully before proceeding to the next.
       </p>
 
-      <!-- START button -->
       <button class="btn btn-primary" onclick="navigateTo('page-2')">
         Begin Study
         <span class="btn-arrow">→</span>
       </button>
-
-      <p class="small-note">Estimated time: 5–10 minutes</p>
     </div>
   </section>
 
+  <!-- TRACK 1 -->
 
-  <!-- ============================================================
-       PAGE 2 — TRACK 1 (NO SOUND)
-       VIDEO FILE: Replace "video_nosound.mp4" with your actual path
-  ============================================================ -->
   <section id="page-2" class="page">
     <div class="page-inner fade-in-up">
       <div class="track-header">
         <span class="track-badge mono">Track 01 / 03</span>
         <h2 class="track-title">Watch the sequence below. Use the controls to replay if needed.</h2>
-     </div>
+      </div>
 
-      <!-- VIDEO PLAYER — replace src with your file -->
       <div class="video-wrap">
-        <video
-          id="video-1"
-          class="video-player"
-          controls
-          preload="metadata"
-          onended="onVideoEnded('video-1', 'btn-next-2')"
-        >
-          <!-- ↓↓ REPLACE THIS PATH with your actual video file ↓↓ -->
+        <video id="video-1" class="video-player" controls preload="auto">
           <source src="https://www.dropbox.com/scl/fi/vponltc04p1u8kqgiqcn6/FLOW_NO_SOUNDTRACK.mp4?rlkey=a762dno2paxga67w9vaqvumpf&st=hfk3wqc7&raw=1" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -80,130 +82,68 @@
       </div>
 
       <div class="nav-row">
-        <!-- Button is disabled until video has been watched once -->
-        <button
-          id="btn-next-2"
-          class="btn btn-primary disabled"
-          disabled
-          onclick="navigateTo('page-3')"
-        >
+        <button id="btn-next-2" class="btn btn-primary disabled" disabled onclick="navigateTo('page-3')">
           Next Track <span class="btn-arrow">→</span>
         </button>
         <p class="watch-hint" id="hint-2">Please watch the video to continue.</p>
       </div>
     </div>
-
-    <!-- Step indicator -->
-    <div class="step-indicator">
-      <span class="step active"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-    </div>
   </section>
 
+  <!-- TRACK 2 -->
 
-  <!-- ============================================================
-       PAGE 3 — TRACK 2 (AI SOUND)
-       NOTE: "Generated sound" — no mention of AI to avoid bias
-       VIDEO FILE: Replace "video_ai.mp4" with your actual path
-  ============================================================ -->
   <section id="page-3" class="page">
     <div class="page-inner fade-in-up">
       <div class="track-header">
         <span class="track-badge mono">Track 02 / 03</span>
         <h2 class="track-title">Watch the sequence below. Use the controls to replay if needed.</h2>
-           </div>
+      </div>
 
       <div class="video-wrap">
-        <video
-          id="video-2"
-          class="video-player"
-          controls
-          preload="metadata"
-          onended="onVideoEnded('video-2', 'btn-next-3')"
-        >
-          <!-- ↓↓ REPLACE THIS PATH with your actual video file ↓↓ -->
-          <source src="https://www.dropbox.com/scl/fi/73q87nm2qwoptko5e0qw7/FLOW_AI_SOUNDTRACK.mp4?rlkey=9f78jshjqiat8bdiucl1rmz1w&st=54toeeqv&raw=1" type="video/mp4" />
+        <video id="video-2" class="video-player" controls preload="auto">
+          <source src="https://www.dropbox.com/scl/fi/2nrkiie0bzvpn2vdpikr5/AI_SOUNDTRACK_FINAL.mp4?rlkey=rjf36cxt9uxs3iixagfe9a6rz&st=0m6abrhu&raw=1" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div class="video-badge mono">TRACK 02 / 03</div>
       </div>
 
       <div class="nav-row">
-        <button
-          id="btn-next-3"
-          class="btn btn-primary disabled"
-          disabled
-          onclick="navigateTo('page-4')"
-        >
+        <button id="btn-next-3" class="btn btn-primary disabled" disabled onclick="navigateTo('page-4')">
           Next Track <span class="btn-arrow">→</span>
         </button>
         <p class="watch-hint" id="hint-3">Please watch the video to continue.</p>
       </div>
     </div>
-
-    <div class="step-indicator">
-      <span class="step done"></span>
-      <span class="step active"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-    </div>
   </section>
 
+  <!-- TRACK 3 -->
 
-  <!-- ============================================================
-       PAGE 4 — TRACK 3 (FOLEY SOUND)
-       NOTE: "Designed sound" — no mention of Foley to avoid bias
-       VIDEO FILE: Replace "video_foley.mp4" with your actual path
-  ============================================================ -->
   <section id="page-4" class="page">
     <div class="page-inner fade-in-up">
       <div class="track-header">
         <span class="track-badge mono">Track 03 / 03</span>
         <h2 class="track-title">Watch the sequence below. Use the controls to replay if needed.</h2>
-          </div>
+      </div>
 
       <div class="video-wrap">
-        <video
-          id="video-3"
-          class="video-player"
-          controls
-          preload="metadata"
-          onended="onVideoEnded('video-3', 'btn-next-4')"
-        >
-          <!-- ↓↓ REPLACE THIS PATH with your actual video file ↓↓ -->
-          <source src="https://www.dropbox.com/scl/fi/73q87nm2qwoptko5e0qw7/FLOW_AI_SOUNDTRACK.mp4?rlkey=9f78jshjqiat8bdiucl1rmz1w&st=54toeeqv&raw=1" type="video/mp4" />
+        <video id="video-3" class="video-player" controls preload="auto">
+          <source src="https://www.dropbox.com/scl/fi/jgu1onuz0s9eb7iw5rkwr/FOLEY_SOUNDTRACK_FINAL.mp4?rlkey=lykmutcdyqmjh37e6sj832eqa&st=vzfsexq1&raw=1" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div class="video-badge mono">TRACK 03 / 03</div>
       </div>
 
       <div class="nav-row">
-        <button
-          id="btn-next-4"
-          class="btn btn-primary disabled"
-          disabled
-          onclick="navigateTo('page-5')"
-        >
+        <button id="btn-next-4" class="btn btn-primary disabled" disabled onclick="navigateTo('page-5')">
           Take Questionnaire <span class="btn-arrow">→</span>
         </button>
         <p class="watch-hint" id="hint-4">Please watch the video to continue.</p>
       </div>
     </div>
-
-    <div class="step-indicator">
-      <span class="step done"></span>
-      <span class="step done"></span>
-      <span class="step active"></span>
-      <span class="step"></span>
-    </div>
   </section>
 
+  <!-- QUESTIONNAIRE -->
 
-  <!-- ============================================================
-       PAGE 5 — QUESTIONNAIRE
-  ============================================================ -->
   <section id="page-5" class="page questionnaire fade-in-up">
     <div class="page-inner">
 
@@ -214,60 +154,55 @@
       </div>
 
       <form id="survey-form" onsubmit="handleSubmit(event)" novalidate>
-	  
-	 <div class="form-section">
-  <h3 class="track-num">Demographics</h3>
-  
-  <div class="demo-grid"> <div class="question-block">
-      <p class="q-label">Age Range</p>
-      <select name="age" class="demo-select" required>
-        <option value="" disabled selected>Select age range</option>
-        <option value="Under 18">Under 18</option>
-        <option value="18-24">18-24</option>
-        <option value="25-34">25-34</option>
-        <option value="35-44">35-44</option>
-        <option value="45+">45+</option>
-      </select>
-    </div>
 
-    <div class="question-block">
-      <p class="q-label">Gender</p>
-      <select name="gender" class="demo-select" required>
-        <option value="" disabled selected>Select gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Non-binary">Non-binary</option>
-        <option value="Prefer not to say">Prefer not to say</option>
-      </select>
-    </div>
+        <!-- DEMOGRAPHICS -->
+		
+        <div class="form-section">
+          <h3 class="track-num">Demographics</h3>
+          <div class="demo-grid">
+            <div class="question-block">
+              <p class="q-label">Age Range</p>
+              <select name="age" class="demo-select" required>
+                <option value="" disabled selected>Select age range</option>
+                <option value="Under 18">Under 18</option>
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45+">45+</option>
+              </select>
+            </div>
 
-    <div class="question-block">
-      <p class="q-label">Level of Education</p>
-      <select name="education" class="demo-select" required>
-        <option value="" disabled selected>Select education</option>
-        <option value="High School">High School</option>
-        <option value="Bachelor's Degree">Bachelor's Degree</option>
-        <option value="Master's Degree">Master's Degree</option>
-        <option value="PhD / Doctorate">PhD / Doctorate</option>
-        <option value="Other">Other</option>
-      </select>
-    </div>
-  </div> </div>
+            <div class="question-block">
+              <p class="q-label">Gender</p>
+              <select name="gender" class="demo-select" required>
+                <option value="" disabled selected>Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
 
-<div class="divider"></div>
+            <div class="question-block">
+              <p class="q-label">Level of Education</p>
+              <select name="education" class="demo-select" required>
+                <option value="" disabled selected>Select education</option>
+                <option value="High School">High School</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="PhD / Doctorate">PhD / Doctorate</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-        <!-- ════════════════════════════════════════════════════
-             TRACK 1 — NO SOUND (baseline)
-             Questions focus on visual storytelling alone —
-             no sync/audio questions since there is no audio.
-        ════════════════════════════════════════════════════ -->
+        <!-- Track 1 -->
+		
         <div class="survey-block">
           <h3 class="survey-track-label">
             <span class="track-num mono">01</span> Track 1
             <span class="track-sublabel">Animation without sound</span>
           </h3>
 
-          <!-- Q1: Emotional Engagement (visual-only baseline) -->
           <div class="question-group">
             <label class="q-label">Emotional Engagement</label>
             <p class="q-hint">Without any audio, how emotionally involving did the animation feel to you?</p>
@@ -284,7 +219,6 @@
             </div>
           </div>
 
-          <!-- Q2: Narrative Clarity (visual-only) -->
           <div class="question-group">
             <label class="q-label">Narrative Clarity</label>
             <p class="q-hint">How easily could you follow the story or action based on visuals alone?</p>
@@ -301,7 +235,6 @@
             </div>
           </div>
 
-          <!-- Q3: Sense of Immersion (visual-only) -->
           <div class="question-group">
             <label class="q-label">Sense of Immersion</label>
             <p class="q-hint">How drawn into the animated world did you feel while watching in silence?</p>
@@ -318,7 +251,6 @@
             </div>
           </div>
 
-          <!-- Q4: Perceived Completeness -->
           <div class="question-group">
             <label class="q-label">Perceived Completeness</label>
             <p class="q-hint">How complete or finished did the sequence feel without any sound?</p>
@@ -336,19 +268,14 @@
           </div>
         </div>
 
-
-        <!-- ════════════════════════════════════════════════════
-             TRACK 2 — GENERATED SOUND (AI / AudioLDM)
-             Questions cover emotional tone, perceived
-             authenticity, sync, and immersion.
-        ════════════════════════════════════════════════════ -->
+        <!-- Track 2 -->
+		
         <div class="survey-block">
           <h3 class="survey-track-label">
             <span class="track-num mono">02</span> Track 2
-            <span class="track-sublabel">Animation with generated sound</span>
+            <span class="track-sublabel">Animation with artificially generated sound</span>
           </h3>
 
-          <!-- Q1: Emotional Tone Conveyance -->
           <div class="question-group">
             <label class="q-label">Emotional Tone</label>
             <p class="q-hint">How well did the sound communicate the emotional tone of the scene (e.g. tension, calm, excitement)?</p>
@@ -365,7 +292,6 @@
             </div>
           </div>
 
-          <!-- Q2: Perceived Authenticity / Naturalness -->
           <div class="question-group">
             <label class="q-label">Perceived Authenticity</label>
             <p class="q-hint">How natural and believable did the sounds feel in relation to what you saw on screen?</p>
@@ -382,7 +308,6 @@
             </div>
           </div>
 
-          <!-- Q3: Audio-Visual Synchronization -->
           <div class="question-group">
             <label class="q-label">Audio-Visual Synchronization</label>
             <p class="q-hint">How precisely did the sounds align with the actions and movements in the animation?</p>
@@ -399,7 +324,6 @@
             </div>
           </div>
 
-          <!-- Q4: Immersive Experience -->
           <div class="question-group">
             <label class="q-label">Immersive Experience</label>
             <p class="q-hint">How much did the sound design draw you into the animated world and strengthen your sense of presence?</p>
@@ -417,18 +341,14 @@
           </div>
         </div>
 
-
-        <!-- ════════════════════════════════════════════════════
-             TRACK 3 — DESIGNED SOUND (Foley)
-             Same four dimensions as Track 2 for comparison.
-        ════════════════════════════════════════════════════ -->
+        <!-- Track 3 -->
+		
         <div class="survey-block">
           <h3 class="survey-track-label">
             <span class="track-num mono">03</span> Track 3
-            <span class="track-sublabel">Animation with designed sound</span>
+            <span class="track-sublabel">Animation with Foley designed sound</span>
           </h3>
 
-          <!-- Q1: Emotional Tone Conveyance -->
           <div class="question-group">
             <label class="q-label">Emotional Tone</label>
             <p class="q-hint">How well did the sound communicate the emotional tone of the scene (e.g. tension, calm, excitement)?</p>
@@ -445,7 +365,6 @@
             </div>
           </div>
 
-          <!-- Q2: Perceived Authenticity / Naturalness -->
           <div class="question-group">
             <label class="q-label">Perceived Authenticity</label>
             <p class="q-hint">How natural and believable did the sounds feel in relation to what you saw on screen?</p>
@@ -462,7 +381,6 @@
             </div>
           </div>
 
-          <!-- Q3: Audio-Visual Synchronization -->
           <div class="question-group">
             <label class="q-label">Audio-Visual Synchronization</label>
             <p class="q-hint">How precisely did the sounds align with the actions and movements in the animation?</p>
@@ -479,7 +397,6 @@
             </div>
           </div>
 
-          <!-- Q4: Immersive Experience -->
           <div class="question-group">
             <label class="q-label">Immersive Experience</label>
             <p class="q-hint">How much did the sound design draw you into the animated world and strengthen your sense of presence?</p>
@@ -497,16 +414,12 @@
           </div>
         </div>
 
-
-        <!-- ════════════════════════════════════════════════════
-             OVERALL PREFERENCE
-        ════════════════════════════════════════════════════ -->
+        <!-- PREFERENCE -->
+		
         <div class="survey-block preference-block">
-          <h3 class="survey-track-label">
-            <span class="track-num mono">✦</span> Overall Preference
-          </h3>
+          <h3 class="survey-track-label">Overall Preference</h3>
           <div class="question-group">
-            <label class="q-label">Which track felt most emotionally complete?</label>
+            <label class="q-label">Which track felt the most natural and emotionally complete?</label>
             <p class="q-hint">Select the version you found most engaging and narratively effective overall.</p>
             <div class="preference-options">
               <label class="pref-pill">
@@ -515,22 +428,20 @@
               </label>
               <label class="pref-pill">
                 <input type="radio" name="preferred_track" value="Track 2" />
-                <span>Track 2 — Generated sound</span>
+                <span>Track 2 — AI generated sound</span>
               </label>
               <label class="pref-pill">
                 <input type="radio" name="preferred_track" value="Track 3" />
-                <span>Track 3 — Designed sound</span>
+                <span>Track 3 — Foley designed sound</span>
               </label>
             </div>
           </div>
         </div>
 
-        <!-- Validation error message -->
         <p class="error-msg" id="form-error" style="display:none;">
-          ⚠ Please answer all questions before submitting.
+          Please answer all questions before submitting.
         </p>
 
-        <!-- Submit button -->
         <div class="submit-row">
           <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
             Submit Responses <span class="btn-arrow">→</span>
@@ -539,37 +450,28 @@
 
       </form>
     </div>
-
-    <div class="step-indicator">
-      <span class="step done"></span>
-      <span class="step done"></span>
-      <span class="step done"></span>
-      <span class="step active"></span>
-    </div>
   </section>
 
+  <!-- THANK YOU PAGE -->
 
-  <!-- ============================================================
-       PAGE 6 — THANK YOU / CONFIRMATION
-  ============================================================ -->
   <section id="page-6" class="page">
     <div class="bg-glow"></div>
     <div class="title-card fade-in-up">
       <div class="thank-icon">✓</div>
       <p class="label mono">Submission Received</p>
       <h2 class="track-title" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">
-        Thank you for your participation.
+        Thank you for your participation!
       </h2>
+      <div class="divider"></div>
       <p class="subtitle" style="max-width: 500px; margin: 1.5rem auto 0;">
-        Your responses have been recorded. They will contribute to research on sound design in digital animation.
+        Your responses have been recorded. They will contribute to research on the effectiveness of Sound Effects Synthesis Methods in Digital Animation.
       </p>
       <div class="divider"></div>
       <p class="small-note">You may now close this window.</p>
     </div>
   </section>
 
-  <!-- Single global watermark — fixed positioning means it persists across all pages -->
-  <div class="watermark">© Domantas Juzikis</div>
+  <div class="watermark watermark-fixed">© Domantas Juzikis, Vilnius 2026</div>
 
   <script src="script.js"></script>
 </body>
