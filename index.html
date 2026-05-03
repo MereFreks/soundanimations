@@ -6,22 +6,20 @@
   <title>Sound Effects Synthesis in Digital Animation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/vponltc04p1u8kqgiqcn6/FLOW_NO_SOUNDTRACK.mp4?rlkey=a762dno2paxga67w9vaqvumpf&st=hfk3wqc7&raw=1" crossorigin />
-  <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/2nrkiie0bzvpn2vdpikr5/AI_SOUNDTRACK_FINAL.mp4?rlkey=rjf36cxt9uxs3iixagfe9a6rz&st=0m6abrhu&raw=1" crossorigin />
-  <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/jgu1onuz0s9eb7iw5rkwr/FOLEY_SOUNDTRACK_FINAL.mp4?rlkey=lykmutcdyqmjh37e6sj832eqa&st=vzfsexq1&raw=1" crossorigin />
+  <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/sqve69vdjp05rlmsycop2/AI_SOUNDTRACK_FINAL.mp4?rlkey=no0zsi12ccdfhgzoffbr0zf89&st=0qkn4h6b&raw=1" crossorigin />
+  <link rel="preload" as="fetch" href="https://www.dropbox.com/scl/fi/md3dmys9vwcwu378wc5cx/FOLEY_SOUNDTRACK_FINAL.mp4?rlkey=tw45w5gxag1ems3zsc4bgbpzf&st=xy5f5slm&raw=1" crossorigin />
 </head>
 <body>
-
-  <!-- HOMEPAGE -->
 
   <section id="page-1" class="page active">
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
 
     <div class="title-card fade-in-up">
-      <p class="label mono">Bachelor's Thesis Research · 2026</p>
+      <p class="label mono">Bachelor's Thesis Research</p>
 
       <h1 class="main-title">
         Sound Effects<br />
@@ -64,12 +62,10 @@
     </div>
   </section>
 
-  <!-- TRACK 1 -->
-
   <section id="page-2" class="page">
     <div class="page-inner fade-in-up">
       <div class="track-header">
-        <span class="track-badge mono">Track 01 / 03</span>
+        <span class="track-badge mono">Use of headphones is recommended</span>
         <h2 class="track-title">Watch the sequence below. Use the controls to replay if needed.</h2>
       </div>
 
@@ -82,67 +78,76 @@
       </div>
 
       <div class="nav-row">
-        <button id="btn-next-2" class="btn btn-primary disabled" disabled onclick="navigateTo('page-3')">
-          Next Track <span class="btn-arrow">→</span>
-        </button>
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" onclick="navigateTo('page-1')">
+            <span class="btn-arrow-back">←</span> Back
+          </button>
+          <button id="btn-next-2" class="btn btn-primary disabled" disabled onclick="navigateTo('page-3')">
+            Next Track <span class="btn-arrow">→</span>
+          </button>
+        </div>
         <p class="watch-hint" id="hint-2">Please watch the video to continue.</p>
       </div>
     </div>
   </section>
 
-  <!-- TRACK 2 -->
-
   <section id="page-3" class="page">
     <div class="page-inner fade-in-up">
       <div class="track-header">
-        <span class="track-badge mono">Track 02 / 03</span>
+        <span class="track-badge mono">Use of headphones is recommended</span>
         <h2 class="track-title">Watch the sequence below. Use the controls to replay if needed.</h2>
       </div>
 
       <div class="video-wrap">
         <video id="video-2" class="video-player" controls preload="auto">
-          <source src="https://www.dropbox.com/scl/fi/2nrkiie0bzvpn2vdpikr5/AI_SOUNDTRACK_FINAL.mp4?rlkey=rjf36cxt9uxs3iixagfe9a6rz&st=0m6abrhu&raw=1" type="video/mp4" />
+          <source src="https://www.dropbox.com/scl/fi/sqve69vdjp05rlmsycop2/AI_SOUNDTRACK_FINAL.mp4?rlkey=no0zsi12ccdfhgzoffbr0zf89&st=0qkn4h6b&raw=1" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div class="video-badge mono">TRACK 02 / 03</div>
       </div>
 
       <div class="nav-row">
-        <button id="btn-next-3" class="btn btn-primary disabled" disabled onclick="navigateTo('page-4')">
-          Next Track <span class="btn-arrow">→</span>
-        </button>
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" onclick="navigateTo('page-2')">
+            <span class="btn-arrow-back">←</span> Back
+          </button>
+          <button id="btn-next-3" class="btn btn-primary disabled" disabled onclick="navigateTo('page-4')">
+            Next Track <span class="btn-arrow">→</span>
+          </button>
+        </div>
         <p class="watch-hint" id="hint-3">Please watch the video to continue.</p>
       </div>
     </div>
   </section>
 
-  <!-- TRACK 3 -->
-
   <section id="page-4" class="page">
     <div class="page-inner fade-in-up">
       <div class="track-header">
-        <span class="track-badge mono">Track 03 / 03</span>
+        <span class="track-badge mono">Use of headphones is recommended</span>
         <h2 class="track-title">Watch the sequence below. Use the controls to replay if needed.</h2>
       </div>
 
       <div class="video-wrap">
         <video id="video-3" class="video-player" controls preload="auto">
-          <source src="https://www.dropbox.com/scl/fi/jgu1onuz0s9eb7iw5rkwr/FOLEY_SOUNDTRACK_FINAL.mp4?rlkey=lykmutcdyqmjh37e6sj832eqa&st=vzfsexq1&raw=1" type="video/mp4" />
+          <source src="https://www.dropbox.com/scl/fi/md3dmys9vwcwu378wc5cx/FOLEY_SOUNDTRACK_FINAL.mp4?rlkey=tw45w5gxag1ems3zsc4bgbpzf&st=xy5f5slm&raw=1" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div class="video-badge mono">TRACK 03 / 03</div>
       </div>
 
       <div class="nav-row">
-        <button id="btn-next-4" class="btn btn-primary disabled" disabled onclick="navigateTo('page-5')">
-          Take Questionnaire <span class="btn-arrow">→</span>
-        </button>
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" onclick="navigateTo('page-3')">
+            <span class="btn-arrow-back">←</span> Back
+          </button>
+          <button id="btn-next-4" class="btn btn-primary disabled" disabled onclick="navigateTo('page-5')">
+            Take Questionnaire <span class="btn-arrow">→</span>
+          </button>
+        </div>
         <p class="watch-hint" id="hint-4">Please watch the video to continue.</p>
       </div>
     </div>
   </section>
-
-  <!-- QUESTIONNAIRE -->
 
   <section id="page-5" class="page questionnaire fade-in-up">
     <div class="page-inner">
@@ -154,8 +159,6 @@
       </div>
 
       <form id="survey-form" onsubmit="handleSubmit(event)" novalidate>
-
-        <!-- DEMOGRAPHICS -->
 		
         <div class="form-section">
           <h3 class="track-num">Demographics</h3>
@@ -194,8 +197,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Track 1 -->
 		
         <div class="survey-block">
           <h3 class="survey-track-label">
@@ -267,8 +268,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Track 2 -->
 		
         <div class="survey-block">
           <h3 class="survey-track-label">
@@ -340,8 +339,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Track 3 -->
 		
         <div class="survey-block">
           <h3 class="survey-track-label">
@@ -413,8 +410,6 @@
             </div>
           </div>
         </div>
-
-        <!-- PREFERENCE -->
 		
         <div class="survey-block preference-block">
           <h3 class="survey-track-label">Overall Preference</h3>
@@ -443,6 +438,9 @@
         </p>
 
         <div class="submit-row">
+          <button type="button" class="btn btn-secondary" onclick="navigateTo('page-4')">
+            <span class="btn-arrow-back">←</span> Back
+          </button>
           <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
             Submit Responses <span class="btn-arrow">→</span>
           </button>
@@ -451,8 +449,6 @@
       </form>
     </div>
   </section>
-
-  <!-- THANK YOU PAGE -->
 
   <section id="page-6" class="page">
     <div class="bg-glow"></div>
