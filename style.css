@@ -146,6 +146,12 @@ body {
   justify-content: flex-start;
 }
 
+@media (min-height: 700px) {
+  #page-1.page {
+    justify-content: center;
+  }
+}
+
 .page-inner {
   position: relative;
   z-index: 1;
