@@ -124,6 +124,11 @@ function onVideoEnded(videoId, btnId) {
   unlockButton(btnId);
 }
 
+function onVideoFallback(videoId, btnId) {
+  videoWatched[videoId] = true;
+  unlockButton(btnId);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.page:not(.questionnaire)').forEach(page => {
     page.addEventListener('scroll', checkWatermark, { passive: true });
